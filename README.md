@@ -1,12 +1,17 @@
 There are three main folders: Code, InputFiles, and Output Files
+
 Charter mode Discards:
+
 1- The files needed to start are the two scripts in the code folder and the csv version of the genrec file (already in the folder).
+
 2- The 2nd script creates a csv file that should work for SS
 
 Private mode Discards(federal pre 2014):
+
 -In development
 
 Private mode Discards(State 2014-2016):
+
 -In development
 
 Still need to determine what to do for 2017-2019.
