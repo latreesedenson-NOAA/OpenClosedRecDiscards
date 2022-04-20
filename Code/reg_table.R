@@ -250,7 +250,7 @@ table(Regdat$reg_season[Regdat$year==2016])[2]
 RegdatPrivate = Regdat%>% filter(between(year,1980,2016))
 RegdatPrivate$mode<-"Private"
 head(RegdatPrivate)
-write.csv(RegPrivate,paste0(DIR,"InputFiles\\RSN_FedPrivate_Regs_through2016.csv"))
+write.csv(RegdatPrivate,paste0(DIR,"InputFiles\\RSN_FedPrivate_Regs_through2016.csv"))
 
 ######################################################################################################
 #-------------------------------- FOR HIRE REGULATIONS THROUGH 2021 ----------------------------------#
