@@ -1,18 +1,17 @@
 There are three main folders: Code, InputFiles, and Output Files
 
-Charter mode Discards:
+Charter mode Discards & Private mode Discards(federal pre 2016):
 
-1- The files needed to start are the two scripts in the code folder and the csv version of the genrec file (already in the folder).
+1- The files needed to start are the scripts in the code folder,the csv version of the genrec file (already in the folder),and the state open season days table.
 
-2- The 2nd script creates a csv file that should work for SS
+2- The numbered scripts create csv files that can easily be minipulated for fleets in SS
 
-Private mode Discards(federal pre 2014):
-
--In development
+*Question: for the private should we start seperating the discards by state and federal waters? This was not done before.
 
 Private mode Discards(State 2014-2016):
 
 -In development
+* Question: same as for the private federal season discards.
 
 Still need to determine what to do for 2017-2019.
 
