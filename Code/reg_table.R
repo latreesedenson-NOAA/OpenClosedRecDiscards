@@ -52,7 +52,7 @@ Regdat<-rbind(RegTable(Years[1]), RegTable(Years[2]), RegTable(Years[3]), RegTab
 dim(Regdat)
 summary(Regdat)
 
-DIR<-'C:\\Users\\latreese.denson\\Desktop\\RecDiscards_forSS\\InputFiles'
+DIR<-'C:\\Users\\latreese.denson\\Desktop\\RecDiscards_forSS\\InputFiles\\'
 
 #Include Regulations
 Regdat$reg_season="open"
@@ -250,14 +250,15 @@ table(Regdat$reg_season[Regdat$year==2016])[2]
 RegdatPrivate = Regdat%>% filter(between(year,1980,2016))
 RegdatPrivate$mode<-"Private"
 head(RegdatPrivate)
-write.csv(RegdatPrivate,paste0(DIR,"InputFiles\\RSN_FedPrivate_Regs_through2016.csv"))
+write.csv(RegdatPrivate,paste0(DIR,"RSN_FedPrivate_Regs_through2016.csv"))
 
 ######################################################################################################
 #-------------------------------- FOR HIRE REGULATIONS THROUGH 2021 ----------------------------------#
 ######################################################################################################
 
 RegdatForHire<-Regdat
-#Include Past Regulations
+# Reset the overlapping years (a bandaid)
+RegdatForHire$reg_season[RegdatForHire$year==2015 |RegdatForHire$year==2016|RegdatForHire$year==2017|RegdatForHire$year==2018|RegdatForHire$year==2019|RegdatForHire$year==2020|RegdatForHire$year==2021] = "open"
 RegdatForHire$mode<-NA
 RegdatForHire$mode<-"For-hire"
 head(RegdatForHire)
@@ -337,7 +338,7 @@ table(RegdatForHire$reg_season[RegdatForHire$year==2020])[2]
 RegdatForHire$reg_season[RegdatForHire$year==2021 & RegdatForHire$month<=5]="closed"
 RegdatForHire$reg_season[RegdatForHire$year==2021 & RegdatForHire$month==8 & RegdatForHire$day>=3]="closed"
 RegdatForHire$reg_season[RegdatForHire$year==2021 & RegdatForHire$month>=9]="closed"
-table(RegdatForHire$reg_season[RegdatForHire$year==2019])[2] 
+table(RegdatForHire$reg_season[RegdatForHire$year==2021])[2] 
 # not included in reg table yet
 
 # Write out For Hire Regs ####

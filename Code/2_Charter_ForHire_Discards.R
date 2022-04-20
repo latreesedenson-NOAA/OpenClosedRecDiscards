@@ -56,12 +56,13 @@ RecCatch.cbt.fed1.sum = RecCatch.cbt.fed1 %>%
 RecCatch.cbt.fed0 = RecCatch %>% filter(NEW_MODEN==Fish.Mode,fed_closed==0)%>% 
   group_by(YEAR,Gulf,WAVE)%>%summarise(sum(B2))
 colnames(RecCatch.cbt.fed0) = c("YEAR","Gulf","WAVE","B2")
+head(RecCatch.cbt.fed0)
 
 # merge based on wave and year to get proportion of season open and closed and discards in one the table
 RecCatch.cbt.fed0 = merge(RecCatch.cbt.fed0,P.Open.Days, by= c("YEAR","WAVE"))
 
 # multiply proportions of season by sum(B2)
-RecCatch.cbt.fed0$Open = as.numeric(RecCatch.cbt.fed0$B2)*as.numeric(RecCatch.cbt.fed0$p_open)
+RecCatch.cbt.fed0$Open = as.numeric(RecCatch.cbt.fed0$B2)
 
 RecCatch.cbt.fed0.sum = RecCatch.cbt.fed0 %>%
   group_by(YEAR,Gulf)%>%
@@ -74,11 +75,13 @@ RecCatch.cbt.fed2 = RecCatch %>% filter(NEW_MODEN==Fish.Mode,fed_closed==2)%>%
   group_by(YEAR,Gulf,WAVE)%>%summarise(sum(B2))
 colnames(RecCatch.cbt.fed2) = c("YEAR","Gulf","WAVE","B2")
 
+
+head(RecCatch.cbt.fed2)
 # merge based on wave and year to get proportion of season open and closed and discards in one the table
 RecCatch.cbt.fed2 = merge(RecCatch.cbt.fed2,P.Open.Days, by= c("YEAR","WAVE"))
 
 # multiply proportions of season by sum(B2)
-RecCatch.cbt.fed2$Closed = as.numeric(RecCatch.cbt.fed2$B2)*as.numeric(RecCatch.cbt.fed2$p_closed)
+RecCatch.cbt.fed2$Closed = as.numeric(RecCatch.cbt.fed2$B2)
 
 RecCatch.cbt.fed2.sum = RecCatch.cbt.fed2 %>%
   group_by(YEAR,Gulf)%>%
