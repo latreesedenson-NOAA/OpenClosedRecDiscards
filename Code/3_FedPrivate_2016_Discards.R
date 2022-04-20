@@ -62,7 +62,7 @@ colnames(RecCatch.fed0) = c("YEAR","Gulf","WAVE","B2")
 RecCatch.fed0 = merge(RecCatch.fed0,P.Open.Days, by= c("YEAR","WAVE"))
 
 # multiply proportions of season by sum(B2)
-RecCatch.fed0$Open = as.numeric(RecCatch.fed0$B2)*as.numeric(RecCatch.fed0$p_open)
+RecCatch.fed0$Open = as.numeric(RecCatch.fed0$B2)
 
 RecCatch.fed0.sum = RecCatch.fed0 %>%
   group_by(YEAR,Gulf)%>%
@@ -79,7 +79,7 @@ colnames(RecCatch.fed2) = c("YEAR","Gulf","WAVE","B2")
 RecCatch.fed2 = merge(RecCatch.fed2,P.Open.Days, by= c("YEAR","WAVE"))
 
 # multiply proportions of season by sum(B2)
-RecCatch.fed2$Closed = as.numeric(RecCatch.fed2$B2)*as.numeric(RecCatch.fed2$p_closed)
+RecCatch.fed2$Closed = as.numeric(RecCatch.fed2$B2)
 
 RecCatch.fed2.sum = RecCatch.fed2 %>%
   group_by(YEAR,Gulf)%>%
