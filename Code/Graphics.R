@@ -6,7 +6,7 @@ OutputDir = "C:\\Users\\latreese.denson\\Desktop\\RecDiscards_forSS\\OutputFiles
 # mode = "Cbt", "FedPriv","StatePriv", "HBT"
 
 timeseries.graph = function(mode = "Cbt",Dir = OutputDir){
-  discard.dat = read.csv(paste0(Dir,"\\",dir(Dir)[grep(paste0(mode,"_Discards"),dir(Dir))]))
+  discard.dat = read.csv(paste0(Dir,"\\",dir(Dir)[grep(paste0(mode,"_Discards.csv"),dir(Dir))]))
 discard.dat.long = discard.dat %>% pivot_longer(cols = starts_with(mode),
                                                 names_to = "Factor",
                                                 names_prefix = paste0(mode,"_"),
@@ -21,4 +21,6 @@ ggsave(paste0(mode,"_Discards.png"),device = png,path = Dir)
 
 }
 
+timeseries.graph(mode="StatePriv")
 timeseries.graph(mode="FedPriv")
+timeseries.graph(mode="Cbt")
