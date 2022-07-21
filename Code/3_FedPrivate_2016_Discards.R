@@ -54,12 +54,12 @@ P.Open.Days = Regs%>%mutate(wave = ifelse(month %in% c(1,2),1,
 P.Open.Days$p_closed = 1-P.Open.Days$p_open
 colnames(P.Open.Days) = c("YEAR","WAVE","p_open","p_closed")
 
-# 1a - Manipulate GenRec/fed_closed Data to include Texas State waters as Always Open ####
-RecCatch = RecCatch %>% mutate(new_fed_closed = ifelse((NEW_STA == "TX"& JURISDICTION=="State"),0,fed_closed)) # 0 = always open
-
-check = RecCatch%>%filter(NEW_STA=="TX",NEW_MODEN=="Priv")
-head(check)
-table(check$fed_closed,check$JURISDICTION,check$new_fed_closed) # Good to go! All texas state jur. 1's or 2's are now all 0's (all open) 
+# # 1a - Manipulate GenRec/fed_closed Data to include Texas State waters as Always Open ####
+# RecCatch = RecCatch %>% mutate(new_fed_closed = ifelse((NEW_STA == "TX"& JURISDICTION=="State"),0,fed_closed)) # 0 = always open
+# 
+# check = RecCatch%>%filter(NEW_STA=="TX",NEW_MODEN=="Priv",YEAR<=2013)%>%select(YEAR,fed_closed,new_fed_closed, JURISDICTION)
+# head(check)
+# table(check$fed_closed,check$JURISDICTION,check$new_fed_closed) # Good to go! All texas state jur. 1's or 2's are now all 0's (all open) 
 
 # 2 - Choose Fishing Mode (CHB, HBT, PRIV) ####
 Fish.Mode ="Priv" # "Cbt"        "Hbt"        "Priv"       "Priv/Shore"
@@ -69,7 +69,7 @@ Fish.Mode ="Priv" # "Cbt"        "Hbt"        "Priv"       "Priv/Shore"
 # fed_closed = 1 - open and closed season occurs in a given wave
 # Pivot discard data by wave and year to get open and closed season discards
 # Should this also be reduced to catches only in federal waters?NO, because everything is federal prior to 2013
-RecCatch.fed1 = RecCatch %>% filter(NEW_MODEN==Fish.Mode,new_fed_closed==1)%>% 
+RecCatch.fed1 = RecCatch %>% filter(NEW_MODEN==Fish.Mode,fed_closed==1)%>% # changed here 7/21
   group_by(YEAR,Gulf,WAVE)%>%summarise(sum(B2))
 colnames(RecCatch.fed1) = c("YEAR","Gulf","WAVE","B2")
 
@@ -87,7 +87,7 @@ RecCatch.fed1.sum = RecCatch.fed1 %>%
 
 # fed_closed = 0 - Open season only discards (b2)
 #Pivot discard data by wave and year to get open and closed season discards
-RecCatch.fed0 = RecCatch %>% filter(NEW_MODEN==Fish.Mode,new_fed_closed==0)%>% 
+RecCatch.fed0 = RecCatch %>% filter(NEW_MODEN==Fish.Mode,fed_closed==0)%>% # changed here 7/21
   group_by(YEAR,Gulf,WAVE)%>%summarise(sum(B2))
 colnames(RecCatch.fed0) = c("YEAR","Gulf","WAVE","B2")
 
@@ -103,7 +103,7 @@ RecCatch.fed0.sum = RecCatch.fed0 %>%
 
 # fed_closed = closed season
 #Pivot discard data by wave and year to get open and closed season discards
-RecCatch.fed2 = RecCatch %>% filter(NEW_MODEN==Fish.Mode,new_fed_closed==2)%>% 
+RecCatch.fed2 = RecCatch %>% filter(NEW_MODEN==Fish.Mode,fed_closed==2)%>% # changed here 7/21
   group_by(YEAR,Gulf,WAVE)%>%summarise(sum(B2))
 colnames(RecCatch.fed2) = c("YEAR","Gulf","WAVE","B2")
 

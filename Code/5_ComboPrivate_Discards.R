@@ -28,5 +28,5 @@ Priv_discard$Priv_Closed_East = FedPriv$FedPriv_Closed_East + StatePriv$StatePri
 
 write.csv(Priv_discard,paste0(OutputDir,"\\TotalPriv_Discards.csv"),row.names = FALSE)
 
-cat("\nDone producing total (open/closd) Private discards, look in output folder\n")
+cat("\nDone producing total (open/closed) Private discards, look in output folder\n")
 

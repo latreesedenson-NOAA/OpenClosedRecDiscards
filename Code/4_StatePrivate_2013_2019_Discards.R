@@ -77,7 +77,7 @@ colnames(P.Open.State) = c("YEAR","WAVE","State","open","NEW_STA","length","p_op
 Fish.Mode ="Priv" # "Cbt"        "Hbt"        "Priv"       "Priv/Shore"
 
 # 3 - Calculate discards for each state season ####
-# Pivot discard data by wave and year, using fed season now instead
+# Pivot discard data by wave and year, using state season now instead
 RecCatch.state = RecCatch %>% filter(NEW_MODEN==Fish.Mode,JURISDICTION=="State")%>% 
   group_by(YEAR,Gulf,NEW_STA,WAVE)%>%summarise(sum(B2))
 colnames(RecCatch.state) = c("YEAR","Gulf","NEW_STA","WAVE","B2")
@@ -97,7 +97,7 @@ RecCatch.state.sum.2016 = RecCatch.state %>% filter(between(YEAR,2013,2016))%>%
             Closed = sum(Closed))
 
 # No jurisdiction 2017-2019
-# Pivot discard data by wave and year, using fed season now instead
+# Pivot discard data by wave and year, using state season now instead
 RecCatch.state.late = RecCatch %>% filter(NEW_MODEN==Fish.Mode)%>% 
   group_by(YEAR,Gulf,NEW_STA,WAVE)%>%summarise(sum(B2))
 colnames(RecCatch.state.late) = c("YEAR","Gulf","NEW_STA","WAVE","B2")
