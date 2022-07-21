@@ -18,8 +18,8 @@
 library(tidyverse)
 # State Jurisdiction 2013-2016
 # 1 - Determine Season Length based on mode ####
-InputDir = "C:\\Users\\latreese.denson\\Desktop\\RecDiscards_forSS\\InputFiles"
-OutputDir = "C:\\Users\\latreese.denson\\Desktop\\RecDiscards_forSS\\OutputFiles"
+InputDir = "C:\\Users\\matthew.w.smith\\Documents\\GitHub\\OpenClosedRecDiscards\\InputFiles"
+OutputDir = "C:\\Users\\matthew.w.smith\\Documents\\GitHub\\OpenClosedRecDiscards\\OutputFiles"
 Regs = read.csv(paste0(InputDir,"\\RSN_StatePrivate_Regs_table.csv"))
 Regs.help = read.csv(paste0(InputDir,"\\RSN_ForHire_Regs_through2021.csv")) # needed for month length doesnt matter 
 RecCatch = read.csv(paste0(InputDir,"/RS_rec_catGEN_8119_20211123.csv"))
