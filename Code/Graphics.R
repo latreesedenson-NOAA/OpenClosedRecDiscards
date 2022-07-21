@@ -1,7 +1,7 @@
 # Code to graph the discards for different modes
 library(tidyverse)
-OutputDir = "C:\\Users\\latreese.denson\\Desktop\\RecDiscards_forSS\\OutputFiles"
-
+user = Sys.getenv("USERNAME")
+OutputDir = paste0("C:/Users/",user,"/Documents/GitHub/OpenClosedRecDiscards/OutputFiles")
 
 # mode = "Cbt", "FedPriv","StatePriv", "HBT"
 
