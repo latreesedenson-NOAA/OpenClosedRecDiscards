@@ -52,7 +52,7 @@ Regdat<-rbind(RegTable(Years[1]), RegTable(Years[2]), RegTable(Years[3]), RegTab
 dim(Regdat)
 summary(Regdat)
 
-DIR<-'C:\\Users\\latreese.denson\\Desktop\\RecDiscards_forSS\\InputFiles\\'
+DIR<-"C:\\Users\\matthew.w.smith\\Documents\\GitHub\\OpenClosedRecDiscards\\InputFiles"
 
 #Include Regulations
 Regdat$reg_season="open"
