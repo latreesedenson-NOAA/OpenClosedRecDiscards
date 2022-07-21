@@ -5,7 +5,7 @@
 
 ## Charter mode Discards & Private mode Discards (Federally regulated seasons):
 
-1- The files needed to start are the scripts in the code folder, the csv version of the genrec file (already in the folder), and the state open season days table.
+1- The files needed to start are the scripts in the code folder (start with regs_table.r), the csv version of the genrec file (already in the folder), and the state open season days table.
 
 ## Private mode Discards (Federally regulated until 2016, State regulated 2013-2019, Federal and state from 2013-2016):
 
