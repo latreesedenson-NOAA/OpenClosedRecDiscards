@@ -1,17 +1,18 @@
-# There are three main folders: 
+# Repository for code to produce open and closed discards for GoM Red Snapper S74 RT
+
+## There are three main folders: 
 1. Code
 2. InputFiles
 3. Output Files
 
-## Charter mode Discards & Private mode Discards (Federally regulated seasons):
+## Code produces the following:
+- Charter mode Discards (Federally regulated 1981-2019)
+- Private mode Discards (Federally regulated until 2016)
+- Private mode Discards (State regulations from 2013-2019)
 
-1- The files needed to start are the scripts in the code folder (start with regs_table.r), the csv version of the genrec file (already in the folder), and the state open season days table.
-
-## Private mode Discards (Federally regulated until 2016, State regulated 2013-2019, Federal and state from 2013-2016):
-
-1- Similar steps to charter mode discards except the season lengths are more complicated and include state season closures.
-
-**The numbered scripts create csv files that can easily be minipulated for fleets in SS.**
+**Notes:** 
+- You only need the state regulations csv (RSN_StatePrivate_Regs_table.csv) to make this run. This comes from SERO as part of the managment history and is saved seperately as a csv wwith "wave" column names altered for better use in R. The other regulations files for ForHire and FedPrivate can actually be created using the reg_table.R script, if you want to redo them.
+- Each R script except for the graphics and combo scripts, check to make sure the genrec data haven't been changed on the S drive. Just sorce the files and it will tell you what to do from there.
 
 
 This repository is a scientific product and is not official communication of the National Oceanic and Atmospheric Administration, or the United States Department of Commerce. All NOAA GitHub project code is provided on an ‘as is’ basis and the user assumes responsibility for its use. Any claims against the Department of Commerce or Department of Commerce bureaus stemming from the use of this GitHub project will be governed by all applicable Federal law. Any reference to specific commercial products, processes, or services by service mark, trademark, manufacturer, or otherwise, does not constitute or imply their endorsement, recommendation or favoring by the Department of Commerce. The Department of Commerce seal and logo, or the seal and logo of a DOC bureau, shall not be used in any manner to imply endorsement of any commercial product or activity by DOC or the United States Government.
