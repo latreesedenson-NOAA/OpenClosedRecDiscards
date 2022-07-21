@@ -131,4 +131,6 @@ colnames(Cbt)[2:dim(Cbt)[2]] = paste0("Cbt_",colnames(Cbt)[2:dim(Cbt)[2]])
 
 write.csv(Cbt,paste0(OutputDir,"\\Cbt_Discards.csv"),row.names = FALSE)
 
+cat("\nDone producing charter boat discards, look in output folder\n")
+    
               
