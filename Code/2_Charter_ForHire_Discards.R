@@ -16,12 +16,28 @@
 # 8. Question your life decisions. 
 
 library(tidyverse)
+library(readxl)
+user = Sys.getenv("USERNAME")
 
 # 1 - Determine Season Length based on mode ####
-InputDir = "C:\\Users\\latreese.denson\\Desktop\\RecDiscards_forSS\\InputFiles"
-OutputDir = "C:\\Users\\latreese.denson\\Desktop\\RecDiscards_forSS\\OutputFiles"
-Regs = read.csv(paste0(InputDir,"\\RSN_ForHire_Regs_through2021.csv"))
-RecCatch = read.csv(paste0(InputDir,"/RS_rec_catGEN_8119_20211123.csv"))
+InputDir = paste0("C:/Users/",user,"/Documents/GitHub/OpenClosedRecDiscards/InputFiles")
+ServerDir = "S:/SEDAR 74RT GM RS 2019/Data inputs/Fishery Dependent"
+OutputDir = paste0("C:/Users/",user,"/Documents/GitHub/OpenClosedRecDiscards/OutputFiles")
+Regs = read.csv(paste0(InputDir,"/RSN_ForHire_Regs_through2021.csv")) # created by reg_table.r
+FileName = "RS_rec_catGEN_8119_20220707"
+
+# File Checks: If it exists in the S drive then just load the R data, 
+# if not change name of RecCatch and do read_excel
+if(file.exists(paste0(ServerDir,"/",FileName,".xlsx")) && file.exists(paste0(InputDir,"/",FileName,".RData"))){
+  load(paste0(InputDir,"/",FileName,".RData"))
+  RecCatch = RecCatch
+  cat("\nfile exists on S drive and Github so loading data from github\n")
+  }else if(file.exists(paste0(ServerDir,"/",FileName,".xlsx")) && !file.exists(paste0(InputDir,"/",FileName,".RData"))){
+    cat("\nfile does exist, but is not saved on github\n")
+    RecCatch = read_excel(paste0(ServerDir,"/",FileName,".xlsx"), sheet = "RS_rec_catGEN_8119_20220707") # OLdFile: RS_rec_catGEN_8119_20211123.csv"
+    save.image(file = paste0(InputDir,"/",FileName,".Rdata"))
+  }else if(!file.exists(paste0(ServerDir,"/",FileName,".xlsx"))){
+      cat("\nNeed to find the new file name on the S drive and change the FileName object in this script\n")}
 
 # Getting to the proportion of open season days by wave
 P.Open.Days = Regs %>%mutate(wave = ifelse(month %in% c(1,2),1,
